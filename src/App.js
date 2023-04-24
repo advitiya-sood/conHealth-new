@@ -4,7 +4,6 @@ import MainArea from './Components/MainArea';
 function App() {
   return (
     <MainArea/>
-   
   );
 }
 

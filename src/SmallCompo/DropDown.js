@@ -47,7 +47,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedVallue, setSeletedValue]=React.useState("Patient Intake")
   const open = Boolean(anchorEl);
@@ -56,6 +56,7 @@ export default function CustomizedMenus() {
   };
   const handleClose = (event) => {
     setSeletedValue(event.target.innerText)
+    props.handleImageDisplay(event.target.innerText)
     setAnchorEl(null);
   };
 
