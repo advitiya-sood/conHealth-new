@@ -1,0 +1,13 @@
+.ApiSectionBox{
+    width: 700px;
+    height: 440px;
+    display: flex;
+    margin: 1rem 0rem 0rem 0rem;
+    background-color: #051727;
+}
+.ApiSectionBoxLeft{
+    flex:0.5
+}
+.ApiSectionBoxRight{
+    flex:0.5
+}

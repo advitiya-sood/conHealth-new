@@ -1,0 +1,47 @@
+.MainAreaBox{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    flex: 1;
+    background-color: #0D4375;
+}
+.MainAreaBoxInner{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.LeftSection{
+    flex-direction: column;
+    flex: 0.4;
+
+}
+.LeftSectionInner{
+    flex-direction: column;
+    flex: 1;
+
+}
+.LeftDocumentImage{
+    width: 450px;
+    height: 350px;
+    padding: 1rem;
+    margin: 1rem;
+    border: 1px solid white;
+}
+
+.RightSection{
+    flex-direction: column;
+    flex: 0.6
+
+}
+.RightSectionInner{
+    flex-direction: column;
+    flex: 1;
+
+}
+
+.ImageButtons{
+    display: flex;
+    gap: 1rem;
+    margin-left: 5rem;
+}
