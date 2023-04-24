@@ -1,6 +1,7 @@
 .MainAreaBox{
     display: flex;
     flex-direction: column;
+    margin-left: 3.5rem;
     height: 100vh;
     flex: 1;
     background-color: #0D4375;
