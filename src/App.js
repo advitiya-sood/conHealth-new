@@ -2,8 +2,8 @@ import './App.css';
 import MainArea from './Components/MainArea';
 
 import { BrowserRouter } from 'react-router-dom';
-import Sidebar from './componentsK/Sidebar';
-import Navbar from './componentsK/Navbar';
+import Sidebar from './Layout/Sidebar';
+import Navbar from './Layout/Navbar';
 
 function App() {
   return (
