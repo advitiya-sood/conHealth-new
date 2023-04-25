@@ -1,10 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "PT Sans", sans-serif;
+
+}
 .navbar {
-    height: 9vh;
-    background: #1b1919;
+    /* height: 9vh; */
+    background: #b6db88;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-image: url(https://healthcare.azureedge.net/header_background.png);
+    justify-content: space-between;
+    
   }
   
   .navbar-logo {
@@ -15,8 +22,13 @@
     align-items: center;
     width: 9rem;
     justify-content: space-between;
+    height: 70px;
+    margin-left: 1rem;
   }
   
+  img{
+    width:40%;
+  }
   .nav-items {
     width: 65vw;
     display: flex;

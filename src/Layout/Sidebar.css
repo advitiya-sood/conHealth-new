@@ -24,13 +24,12 @@
   
   .sidebar.active {
     left: 0;
-    background: #1b1919;
-
-    background-image: url(https://healthcare.azureedge.net/header_background.png);
+    background:  #b6db88;
 
   }
   
   .sidebar-items {
+    
     font-size: 1.2rem;
     display: flex;
     align-items: center;

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import * as Icons from "react-icons/fa";
 import "./Navbar.css";
 import { navItems } from "./Navitems.jsx";
 
@@ -10,8 +9,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <Link to="/" className="navbar-logo" >
-          <Icons.FaPiedPiper />
-          Contoso Healthcare
+          <img src="https://ted2022.wpengine.com/wp-content/uploads/2022/06/thirdeye1.png"></img>
         </Link>
         { (
           <ul className="nav-items">
