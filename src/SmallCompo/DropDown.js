@@ -3,7 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { FormControlLabel, FormGroup } from '@mui/material';
+import { FormControlLabel, FormGroup, MenuList } from '@mui/material';
 // import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 const StyledMenu = styled((props) => (
@@ -88,13 +88,15 @@ export default function CustomizedMenus(props) {
         <MenuItem  name="Patient Intake" value="Patient Intake" onClick={handleClose} disableRipple>
           Patient Intake
         </MenuItem>
-        <MenuItem  name="Handwritten Form"  value="Handwritten Form" onClick={handleClose} disableRipple>
-          Handwritten Form
-        </MenuItem><MenuItem   name="Translated Form" value="Translated Form" onClick={handleClose} disableRipple>
-         Translated Form
-       </MenuItem><MenuItem  value="Image Form" name="Image Form" onClick={handleClose} disableRipple>
-         Image Form
-       </MenuItem>
+        <MenuList >
+          <MenuItem  name="Handwritten Form"  value="Handwritten Form" onClick={handleClose} disableRipple>
+            Handwritten Form
+          </MenuItem><MenuItem   name="Translated Form" value="Translated Form" onClick={handleClose} disableRipple>
+          Translated Form
+        </MenuItem><MenuItem  value="Image Form" name="Image Form" onClick={handleClose} disableRipple>
+          Image Form
+        </MenuItem>
+        </MenuList>
 
 
        

@@ -4,11 +4,18 @@ import MainUpperSection from './MainUpperArea/MainUpperSection'
 import ApiSection from './ApiSection/ApiSection'
 import { Button } from '@mui/material'
 import {useDropzone} from 'react-dropzone';
-
+import { Document,Page } from 'react-pdf/dist/esm/entry.webpack';
 
 export default function MainArea() {
     const [currentImage,setCurrentImage]=useState("/Image/paitent_intake.png")
     const [imageState,setImageState]=useState(false)
+
+    const [numPages, setNumPages] = useState(null);
+    const [pageNumber, setPageNumber] = useState(1);
+
+
+
+   
 
 
     const thumbsContainer = {
@@ -45,54 +52,75 @@ export default function MainArea() {
 
     const handleImageDisplay=(value)=>{
         setImageState(false)
-        if(value==="Patient Intake"){
-            setCurrentImage("/Image/paitent_intake.png")
+        if(value==="contract2"){
+            setCurrentImage("/contract_notes/contract2.pdf")
+        }else if(value==="contract3"){
+            setCurrentImage("/contract_notes/contract3.pdf")
+        }else if(value==="contract4"){
+            setCurrentImage("/contract_notes/contract4.pdf")
+        }else if(value==="contract5"){
+            setCurrentImage("/contract_notes/contract5.pdf")
+        }else if(value==="Govind Beriwal-Jb Contract Note"){
+          setCurrentImage("/contract_notes/GOVIND BERIWAL- JB Contract Note.pdf")
+      }
+    
+      else if(value==="hdfc_Statement1"){
+        setCurrentImage("/hdfc_statements/statement1.pdf")
+      }else if(value==="hdfc_Statement2"){
+        setCurrentImage("/hdfc_statements/statement2.pdf")
+      }else if(value==="hdfc_Statement3"){
+        setCurrentImage("/hdfc_statements/statement3.pdf")
+      }else if(value==="hdfc_Statement4"){
+        setCurrentImage("/hdfc_statements/statement4.pdf")
+      }else if(value==="hdfc_Statement5"){
+        setCurrentImage("/hdfc_statements/statement5.pdf")
+      }else if(value==="Anuj Beriwala-Iifl Bank Statement"){
+        setCurrentImage("/hdfc_statements/Anju Beriwala- IIFL Bank Statement.pdf")
+      }
 
-        }else if(value==="Handwritten Form"){
-            setCurrentImage("/Image/handwritten-form.jpg")
-
-        }else if(value==="Translated Form"){
-            setCurrentImage("/Image/translated-form.jpg")
-            
-        }else if(value==="Image Form"){
-            setCurrentImage("/Image/image-form.jpg")
-
-        }
+      else if(value==="kotak_Statement2"){
+        setCurrentImage("/kotak-statements/Kotak Bank Statement2.pdf")
+      }else if(value==="kotak_Statement3"){
+        setCurrentImage("/kotak-statements/Kotak Bank Statement3.pdf")
+      }else if(value==="kotak_Statement4"){
+        setCurrentImage("/kotak-statements/Kotak Bank Statement4.pdf")
+      }else if(value==="kotak_Statement5"){
+        setCurrentImage("/kotak-statements/Kotak Bank Statement5.pdf")
+      }else if(value==="kotak_Statement6"){
+        setCurrentImage("/kotak-statements/Kotak Bank Statement6.pdf")
+      }
 
     }
 
 
 
-        const [files, setFiles] = useState([]);
-        const {getRootProps, getInputProps,open, acceptedFiles} = useDropzone({
-          accept: {
-            'image/*': []
-          },
-          onDrop: acceptedFiles => {
-            setFiles(acceptedFiles.map(file => Object.assign(file, {
-              preview: URL.createObjectURL(file)
-            })));
+      const [files, setFiles] = useState([]);
+       
+
+
+          const handleUpload=(e)=>{
+            let seletedFile=e.target.files[0];
+            setCurrentImage(seletedFile)       
           }
-        });
+
+ 
 
 
-        const thumbs = files.map(file => 
-            (<div  key={file.name}>
-              <div style={thumbInner}>
-                <img
-                style={{width:"100%", height:"100%"}}
-                  src={file.preview}
-                  // Revoke data uri after image is loaded
-                  onLoad={() => { URL.revokeObjectURL(file.preview) }}
-                />
-              </div>
-            </div>
-            ));
+          function onDocumentLoadSuccess({numPages}){
+            setNumPages(numPages);
+            setPageNumber(1);
+          }
 
 
-          const handleUpload=()=>{
-            open()
-            setImageState(true)
+          function changePage(offSet){
+            setPageNumber(prevPageNumber => prevPageNumber + offSet);
+          }
+          function changePageBack(){
+            changePage(-1)
+          }
+        
+          function changePageNext(){
+            changePage(+1)
           }
 
 
@@ -104,13 +132,18 @@ export default function MainArea() {
         <div className='LeftSection' >
             <div className='LeftSectionInner' >
 
-                <div className="LeftDocumentImage" >
-                    {(imageState)?(thumbs):
-                        <img  style={{width:"100%", height:"100%"}} src={currentImage}/>
-                    }
+                <div className="LeftDocumentImage" >     
+                   <Document file={currentImage} onLoadSuccess={onDocumentLoadSuccess} >
+                  <Page height="350" width="450"   pageNumber={pageNumber} />
+                  </Document>
+                
                 </div>
                 <div  className='ImageButtons' >
-                <Button sx={{borderRadius:'8px', color:"black", backgroundColor:"white"}} variant="contained" onClick={handleUpload}  > Upload an Image</Button>
+
+                <Button  type='file' sx={{borderRadius:'8px', color:"black", backgroundColor:"white"}} > <input type='file'  onChange={handleUpload} ></input></Button>
+
+                {/* <input type='file'  onChange={handleUpload} ></input> */}
+
                 <Button sx={{borderRadius:'8px', color:"black", backgroundColor:"white"}} variant="contained" > Process</Button>
                 {console.log(files)}
                 </div>
