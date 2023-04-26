@@ -6,7 +6,9 @@
     background-color: #051727;
 }
 .ApiSectionBoxLeft{
-    flex:0.5
+    flex:0.5;
+    overflow:hidden;
+    padding-left: 10px;
 }
 .ApiSectionBoxRight{
     flex:0.5
