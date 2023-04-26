@@ -7,7 +7,7 @@ import {useDropzone} from 'react-dropzone';
 import { Document,Page } from 'react-pdf/dist/esm/entry.webpack';
 
 export default function MainArea() {
-    const [currentImage,setCurrentImage]=useState("/Image/paitent_intake.png")
+    const [currentImage,setCurrentImage]=useState("/contract_notes/contract2.pdf")
     const [imageState,setImageState]=useState(false)
 
     const [numPages, setNumPages] = useState(null);

@@ -6,7 +6,7 @@ import ArrowDownLineIcon from '@rsuite/icons/ArrowDownLine'
   
 function DropDown3(props) {
     
-    const [selectedVallue, setSeletedValue]=React.useState("Contract Notes")
+    const [selectedVallue, setSeletedValue]=React.useState("contract2")
 
 
 
