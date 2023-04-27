@@ -27,9 +27,9 @@ import { AzureKeyCredential, DocumentAnalysisClient } from "@azure/ai-form-recog
 
     if(option==="Hdfc_Statements"){
       modalApi="hdfc_model"
-        if(fileName=="statement1.pdf"){
+        if(fileName=="HDFC Statement_1.pdf"){
             pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/HDFC%20Statement_1.pdf"
-        }else if(fileName=="statement2.pdf"){
+        }else if(fileName=="HDFC Statement_2.pdf"){
             pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/HDFC%20Statement_2.pdf"
         }
     }else if(option==="Kotak_Statements"){
