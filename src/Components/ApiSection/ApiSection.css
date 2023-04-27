@@ -1,15 +1,43 @@
 .ApiSectionBox{
-    width: 650px;
+    width: 700px;
     height: 440px;
     display: flex;
     margin: 1rem 0rem 0rem 0rem;
     background-color: #051727;
 }
 .ApiSectionBoxLeft{
-    flex:0.5;
+    flex:0.55;
     overflow:hidden;
     padding-left: 10px;
 }
 .ApiSectionBoxRight{
-    flex:0.5
+    flex:0.45;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.ApiSectionBoxRight-chatbotHeader{
+    background-color: #b6db88;
+    flex: 0.1;
+}
+.ApiSectionBoxRight-chatbotHeader h4{
+    padding: 0.5rem;
+    color: white;
+}
+
+.ApiSectionBoxRight-body{
+    flex: 0.8;
+    overflow-y: scroll;
+
+}
+
+.ApiSectionBoxRight-bottom{
+    flex:0.1;
+    border-top: 0.5px solid grey;
+
+}
+.ApiSectionBoxRight-bottom-Input{
+    width: 100%;
+    height: 100%;
 }

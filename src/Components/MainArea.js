@@ -32,7 +32,7 @@ import Kotak_Bank_Statement6 from "../assets/kotak-statements/Kotak_Bank_Stateme
 
 
 export default function MainArea() {
-    const [currentImage,setCurrentImage]=useState(Anju_Beriwala_IIFL_Bank_Statement)
+    const [currentImage,setCurrentImage]=useState()
     const [imageState,setImageState]=useState(false)
     const [apiResponse,setApiResponse]=useState()
     const [option, setOption]=useState("Hdfc_Statements")

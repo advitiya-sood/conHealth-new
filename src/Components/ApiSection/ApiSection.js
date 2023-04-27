@@ -17,7 +17,16 @@ export default function ApiSection({apiResponse}) {
 
         </div>
         <div className='ApiSectionBoxRight' >
-            API Right
+
+            <div className='ApiSectionBoxRight-chatbotHeader' >
+              <h4>Copilot</h4>
+            </div>
+            <div className='ApiSectionBoxRight-body' >
+
+            </div>
+            <div className='ApiSectionBoxRight-bottom' >
+              <input   className='ApiSectionBoxRight-bottom-Input'   placeholder='Type a Message...' />
+            </div>
         </div>
     </div>
   )

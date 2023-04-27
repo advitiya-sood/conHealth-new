@@ -35,6 +35,12 @@ import { AzureKeyCredential, DocumentAnalysisClient } from "@azure/ai-form-recog
     }else if(option==="Kotak_Statements"){
       modalApi="kotak_model1"
       pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/Kotak%20%20Statement_1.pdf"
+    }else if(option==="Contract"){
+        modalApi="contract_model1"
+        if(fileName=="Contract Note_1.PDF"){
+            pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/Contract%20Note_1.PDF"
+        }
+
     }
 
 
