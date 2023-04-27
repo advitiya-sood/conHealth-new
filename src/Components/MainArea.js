@@ -7,6 +7,7 @@ import { Document,Page } from 'react-pdf/dist/esm/entry.webpack';
 
 
 import Modal from '../Model/Modal.mjs'
+import * as XLSX from "xlsx/xlsx";
 
 import contract2 from "../assets/contract_notes/contract2.pdf"
 import contract3 from "../assets/contract_notes/contract3.pdf"
@@ -114,7 +115,19 @@ export default function MainArea() {
           function onDocumentLoadSuccess({numPages}){
             setNumPages(numPages);
             setPageNumber(1);
-            console.log("Load doc success")
+          }
+
+
+          function handleExport(){
+            console.log(apiResponse)
+
+            var wb=XLSX.utils.book_new(),
+            ws=XLSX.utils.json_to_sheet(apiResponse);
+
+            XLSX.utils.book_append_sheet(wb,ws, "MySheet1")
+
+            XLSX.writeFile(wb,"MyExcel.xlsx");
+
           }
 
 
@@ -133,7 +146,7 @@ export default function MainArea() {
 
   return (
     <div className='MainAreaBox' >
-        <MainUpperSection  handleImageDisplay={handleImageDisplay} />
+        <MainUpperSection  handleImageDisplay={handleImageDisplay}  handleExport={handleExport} />
         <div className='MainAreaBoxInner' >
         <div className='LeftSection' >
             <div className='LeftSectionInner' >

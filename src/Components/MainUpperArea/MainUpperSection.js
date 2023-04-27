@@ -4,18 +4,15 @@ import DropDown from '../../SmallCompo/DropDown'
 import './MainUpperSection.css'
 import DropDown3 from '../../SmallCompo/DropDown3';
 
-export default function MainUpperSection({handleImageDisplay}) {
-
-
+export default function MainUpperSection({handleImageDisplay,handleExport}) {
 
 
   return (
     <div className='UpperBox' >
-        <div></div>
+        <div> <Button sx={{ color:'black', backgroundColor:"white"}} variant="contained"  onClick={handleExport} >Export</Button></div>
         <div style={{display:"flex", gap:"10px"}} >
-        {/* <DropDown  handleImageDisplay={handleImageDisplay}  /> */}
         <DropDown3  handleImageDisplay={handleImageDisplay}  />
-        <Button sx={{ color:'black', backgroundColor:"white"}} variant="contained" href="#contained-buttons"> Link</Button>
+        <Button sx={{ color:'black', backgroundColor:"white"}} variant="contained" > Link</Button>
         </div>
         <div></div>
     </div>
