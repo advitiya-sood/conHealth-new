@@ -13,22 +13,41 @@ import { AzureKeyCredential, DocumentAnalysisClient } from "@azure/ai-form-recog
 *
 * @summary analyze a document using a model by ID
 */
- export default async function model() {
+ export default async function Modal(option,fileName) {
   /*
     Remember to remove the key from your code when you're done, and never post it publicly. For production, use
     secure methods to store and access your credentials. For more information, see 
     https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp#environment-variables-and-application-configuration
   */
 
+    let modalApi="hdfc_model"
+    let pdfLink ="https://formrecognizer12345.blob.core.windows.net/form-recognizer/statement5.pdf"
+    
+
+
+    if(option==="Hdfc_Statements"){
+      modalApi="hdfc_model"
+        if(fileName=="statement1.pdf"){
+            pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/HDFC%20Statement_1.pdf"
+        }else if(fileName=="statement2.pdf"){
+            pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/HDFC%20Statement_2.pdf"
+        }
+    }else if(option==="Kotak_Statements"){
+      modalApi="kotak_model1"
+      pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/Kotak%20%20Statement_1.pdf"
+    }
+
+
+
   const endpoint = process.env.FORM_RECOGNIZER_ENDPOINT || "https://singhco.cognitiveservices.azure.com/";
   const credential = new AzureKeyCredential(process.env.FORM_RECOGNIZER_API_KEY || "23d8584ca7844634a2f876ee1a19456f");
   const client = new DocumentAnalysisClient(endpoint, credential);
 
-  const modelId = process.env.FORM_RECOGNIZER_CUSTOM_MODEL_ID || "hdfc_model";
+  const modelId = process.env.FORM_RECOGNIZER_CUSTOM_MODEL_ID || modalApi;
 
     var  resultObj={}
+    console.log("optionnnnn",option)
 
-  let pdfLink ="https://formrecognizer12345.blob.core.windows.net/form-recognizer/statement5.pdf"
 
   const poller = await client.beginAnalyzeDocument(
     modelId,
@@ -71,7 +90,7 @@ import { AzureKeyCredential, DocumentAnalysisClient } from "@azure/ai-form-recog
 
 }
 
-model().catch((error) => {
+Modal().catch((error) => {
   console.error("An error occurred:", error);
   process.exit(1);
 });

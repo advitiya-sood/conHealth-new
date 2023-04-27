@@ -4,7 +4,9 @@ import MainUpperSection from './MainUpperArea/MainUpperSection'
 import ApiSection from './ApiSection/ApiSection'
 import { Button } from '@mui/material'
 import { Document,Page } from 'react-pdf/dist/esm/entry.webpack';
-import model from '../Model/model.mjs'
+
+
+import Modal from '../Model/Modal.mjs'
 
 import contract2 from "../assets/contract_notes/contract2.pdf"
 import contract3 from "../assets/contract_notes/contract3.pdf"
@@ -28,55 +30,65 @@ import Kotak_Bank_Statement6 from "../assets/kotak-statements/Kotak_Bank_Stateme
 
 
 
+
 export default function MainArea() {
     const [currentImage,setCurrentImage]=useState(Anju_Beriwala_IIFL_Bank_Statement)
     const [imageState,setImageState]=useState(false)
     const [apiResponse,setApiResponse]=useState()
+    const [option, setOption]=useState("Hdfc_Statements")
+    const [fileName, setFileName]=useState("")
 
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
 
 
 
-    const handleImageDisplay=(value)=>{
-        setImageState(false)
-        if(value==="contract2"){
-            setCurrentImage(contract2)
-        }else if(value==="contract3"){
-            setCurrentImage(contract3)
-        }else if(value==="contract4"){
-            setCurrentImage(contract4)
-        }else if(value==="contract5"){
-            setCurrentImage(contract5)
-        }else if(value==="Govind Beriwal-Jb Contract Note"){
-          setCurrentImage(GOVIND_BERIWAL_JB_Contract_Note)
-      }
+    // const handleImageDisplay=(value)=>{
+    //     setImageState(false)
+    //     if(value==="contract2"){
+    //         setCurrentImage(contract2)
+    //     }else if(value==="contract3"){
+    //         setCurrentImage(contract3)
+    //     }else if(value==="contract4"){
+    //         setCurrentImage(contract4)
+    //     }else if(value==="contract5"){
+    //         setCurrentImage(contract5)
+    //     }else if(value==="Govind Beriwal-Jb Contract Note"){
+    //       setCurrentImage(GOVIND_BERIWAL_JB_Contract_Note)
+    //   }
     
-      else if(value==="hdfc_Statement1"){
-        setCurrentImage(statement1)
-      }else if(value==="hdfc_Statement2"){
-        setCurrentImage(statement2)
-      }else if(value==="hdfc_Statement3"){
-        setCurrentImage(statement3)
-      }else if(value==="hdfc_Statement4"){
-        setCurrentImage(statement4)
-      }else if(value==="hdfc_Statement5"){
-        setCurrentImage(statement5)
-      }else if(value==="Anuj Beriwala-Iifl Bank Statement"){
-        setCurrentImage(Anju_Beriwala_IIFL_Bank_Statement)
-      }
+    //   else if(value==="hdfc_Statement1"){
+    //     setCurrentImage(statement1)
+    //   }else if(value==="hdfc_Statement2"){
+    //     setCurrentImage(statement2)
+    //   }else if(value==="hdfc_Statement3"){
+    //     setCurrentImage(statement3)
+    //   }else if(value==="hdfc_Statement4"){
+    //     setCurrentImage(statement4)
+    //   }else if(value==="hdfc_Statement5"){
+    //     setCurrentImage(statement5)
+    //   }else if(value==="Anuj Beriwala-Iifl Bank Statement"){
+    //     setCurrentImage(Anju_Beriwala_IIFL_Bank_Statement)
+    //   }
 
-      else if(value==="kotak_Statement2"){
-        setCurrentImage(Kotak_Bank_Statement2)
-      }else if(value==="kotak_Statement3"){
-        setCurrentImage(Kotak_Bank_Statement3)
-      }else if(value==="kotak_Statement4"){
-        setCurrentImage(Kotak_Bank_Statement4)
-      }else if(value==="kotak_Statement5"){
-        setCurrentImage(Kotak_Bank_Statement5)
-      }else if(value==="kotak_Statement6"){
-        setCurrentImage(Kotak_Bank_Statement6)
-      }
+    //   else if(value==="kotak_Statement2"){
+    //     setCurrentImage(Kotak_Bank_Statement2)
+    //   }else if(value==="kotak_Statement3"){
+    //     setCurrentImage(Kotak_Bank_Statement3)
+    //   }else if(value==="kotak_Statement4"){
+    //     setCurrentImage(Kotak_Bank_Statement4)
+    //   }else if(value==="kotak_Statement5"){
+    //     setCurrentImage(Kotak_Bank_Statement5)
+    //   }else if(value==="kotak_Statement6"){
+    //     setCurrentImage(Kotak_Bank_Statement6)
+    //   }
+
+    // }
+
+
+
+    const handleImageDisplay=(value)=>{
+      setOption(value)
 
     }
 
@@ -85,12 +97,14 @@ export default function MainArea() {
 
 
           const handleUpload=(e)=>{
+            setFileName(e.target.files[0].name);
             let seletedFile=e.target.files[0];
             setCurrentImage(seletedFile)       
+            
           }
 
           const handleProcess= async()=>{
-          const response= await model()
+          const response= await Modal(option,fileName)
           console.log("response",response)
             setApiResponse(response)
           }
@@ -100,6 +114,7 @@ export default function MainArea() {
           function onDocumentLoadSuccess({numPages}){
             setNumPages(numPages);
             setPageNumber(1);
+            console.log("Load doc success")
           }
 
 
