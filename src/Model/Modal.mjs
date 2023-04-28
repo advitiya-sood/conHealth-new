@@ -20,13 +20,13 @@ import { AzureKeyCredential, DocumentAnalysisClient } from "@azure/ai-form-recog
     https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp#environment-variables-and-application-configuration
   */
 
-    let modalApi="hdfc_model"
-    let pdfLink ="https://formrecognizer12345.blob.core.windows.net/form-recognizer/statement5.pdf"
+    let modalApi=""
+    let pdfLink =""
     
 
 
     if(option==="Hdfc_Statements"){
-      modalApi="hdfc_model"
+      modalApi="hdfc_model1"
         if(fileName=="HDFC Statement_1.pdf"){
             pdfLink="https://formrecognizer12345.blob.core.windows.net/form-recognizer/prod/HDFC%20Statement_1.pdf"
         }else if(fileName=="HDFC Statement_2.pdf"){

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './MainArea.css'
 import MainUpperSection from './MainUpperArea/MainUpperSection'
 import ApiSection from './ApiSection/ApiSection'
@@ -36,13 +36,14 @@ export default function MainArea() {
     const [currentImage,setCurrentImage]=useState()
     const [imageState,setImageState]=useState(false)
     const [apiResponse,setApiResponse]=useState()
+    const [apiResponseArr, setApiResponseArr]=useState([])
     const [option, setOption]=useState("Hdfc_Statements")
     const [fileName, setFileName]=useState("")
 
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
 
-
+    // let apiResponseArr=[]
 
     // const handleImageDisplay=(value)=>{
     //     setImageState(false)
@@ -108,10 +109,10 @@ export default function MainArea() {
           const response= await Modal(option,fileName)
           console.log("response",response)
             setApiResponse(response)
+            setApiResponseArr([...apiResponseArr,response])
           }
- 
 
-
+           
           function onDocumentLoadSuccess({numPages}){
             setNumPages(numPages);
             setPageNumber(1);
@@ -119,15 +120,14 @@ export default function MainArea() {
 
 
           function handleExport(){
-            console.log(apiResponse)
-
+            // console.log("exported",apiResponseArr)         
+            
             var wb=XLSX.utils.book_new(),
-            ws=XLSX.utils.json_to_sheet(apiResponse);
+            ws=XLSX.utils.json_to_sheet(apiResponseArr);
 
             XLSX.utils.book_append_sheet(wb,ws, "MySheet1")
 
             XLSX.writeFile(wb,"MyExcel.xlsx");
-
           }
 
 
@@ -146,7 +146,7 @@ export default function MainArea() {
 
   return (
     <div className='MainAreaBox' >
-        <MainUpperSection  handleImageDisplay={handleImageDisplay}  handleExport={handleExport} />
+        <MainUpperSection  handleImageDisplay={handleImageDisplay} handleExport={handleExport}  />
         <div className='MainAreaBoxInner' >
         <div className='LeftSection' >
             <div className='LeftSectionInner' >
@@ -171,7 +171,7 @@ export default function MainArea() {
         </div>
         <div className='RightSection' >
             <div className='RightSectionInner' >
-                    <ApiSection   apiResponse={apiResponse} />
+                    <ApiSection   apiResponse={apiResponse}  />
             </div>
 
         </div>
